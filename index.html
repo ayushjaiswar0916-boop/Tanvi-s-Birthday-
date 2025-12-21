@@ -1,120 +1,99 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday! 💖</title>
+<title>Happy Birthday!</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Pacifico', cursive;
-        overflow: hidden;
-        background: radial-gradient(circle at top left, #ff9a9e, #fad0c4, #fbc2eb);
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body, html { height:100%; font-family: 'Pacifico', cursive; overflow:hidden; }
+    
+    .page {
+        position: absolute;
+        width: 100%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100vh;
         text-align: center;
-        color: #fff;
+        transition: transform 0.8s ease;
     }
 
-    h1 {
-        font-size: 3em;
-        margin: 0.2em;
-        text-shadow: 2px 2px 8px #000;
-    }
+    .hidden { transform: translateX(100%); }
+
+    body { background: #ff9a9e; }
+
+    h1 { font-size: 3em; color: #fff; text-shadow: 2px 2px 8px #000; margin-bottom: 20px; }
+    p { font-size: 1.3em; color: #fff; max-width: 90%; text-shadow: 1px 1px 5px #000; }
 
     .cake {
         font-size: 5em;
-        margin: 10px 0;
-        animation: bounce 1s infinite;
+        cursor: pointer;
+        transition: transform 0.5s;
     }
 
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-20px); }
-    }
+    .cake:active { transform: scale(0.9) rotate(-15deg); }
 
-    .paragraph {
-        max-width: 90%;
+    .gift-message {
+        font-size: 1.2em;
         background: rgba(0,0,0,0.2);
         padding: 15px 20px;
         border-radius: 15px;
-        font-size: 1.2em;
-        margin-top: 20px;
-        line-height: 1.5em;
+        color:#fff;
         box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        line-height: 1.5em;
     }
 
-    .heart {
-        position: absolute;
-        font-size: 2em;
-        animation: float 6s linear infinite;
-        opacity: 0.8;
-    }
-
-    @keyframes float {
-        0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-        100% { transform: translateY(-50vh) rotate(360deg); opacity: 0; }
-    }
-
-    .confetti {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background-color: #fff;
-        border-radius: 50%;
-        animation: confettiFall 5s linear infinite;
-        opacity: 0.9;
-    }
-
-    @keyframes confettiFall {
-        0% { transform: translateY(-10vh) rotate(0deg); }
-        100% { transform: translateY(100vh) rotate(360deg); }
-    }
-
+    .fade-in { animation: fadeIn 1s ease forwards; }
+    @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
 </style>
 </head>
 <body>
 
-<div class="cake">🎂</div>
-<h1>Happy Birthday! 💖</h1>
+<!-- Page 1: Happy Birthday + cake -->
+<div id="page1" class="page">
+    <h1>🎉 Happy Birthday! 🎉</h1>
+    <p>Swipe or tap the cake to cut it!</p>
+    <div class="cake">🎂</div>
+</div>
 
-<div class="paragraph">
-Hey… I know we’ve never talked before, but I couldn’t let this day pass without telling you something important.  
-Even without knowing you, I feel like your smile and presence could light up the whole world.  
-I hope this day brings you endless happiness, laughter, and magical memories ✨.  
-I wanted to wish you from the bottom of my heart that you’re truly amazing ❤️, and I hope one day I get the chance to know you better.  
-May this year be filled with everything you dream of 💫.  
-Happy Birthday, the world is brighter because you exist 🌸.
+<!-- Page 2: Gift + secret message -->
+<div id="page2" class="page hidden">
+    <h1>🎁 Here's Your Gift! 🎁</h1>
+    <div class="gift-message fade-in">
+        Hey… I know we haven’t talked, but I wanted to wish you a truly amazing birthday.<br><br>
+        May your day be filled with joy, laughter, and magical memories ✨.<br>
+        You deserve all the happiness in the world 💖.<br><br>
+        Happy Birthday! 🌸
+    </div>
 </div>
 
 <script>
-    const hearts = ['❤️','💛','💚','💙','💜','🧡','💕','💖','💞'];
-    for(let i=0;i<30;i++){
-        let heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.style.left = Math.random()*100 + 'vw';
-        heart.style.fontSize = (20+Math.random()*30)+'px';
-        heart.innerText = hearts[Math.floor(Math.random()*hearts.length)];
-        heart.style.animationDuration = (3 + Math.random()*5)+'s';
-        document.body.appendChild(heart);
+    const cake = document.querySelector('.cake');
+    const page1 = document.getElementById('page1');
+    const page2 = document.getElementById('page2');
+
+    function goToGiftPage() {
+        page1.classList.add('hidden');
+        page2.classList.remove('hidden');
     }
 
-    // Confetti
-    for(let i=0;i<50;i++){
-        let c = document.createElement('div');
-        c.className = 'confetti';
-        c.style.left = Math.random()*100 + 'vw';
-        c.style.backgroundColor = `hsl(${Math.random()*360}, 80%, 60%)`;
-        c.style.width = c.style.height = (5+Math.random()*10)+'px';
-        c.style.animationDuration = (3+Math.random()*5)+'s';
-        document.body.appendChild(c);
+    // Click/tap cake
+    cake.addEventListener('click', goToGiftPage);
+
+    // Swipe detection
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    function checkSwipe() {
+        if (touchendX < touchstartX - 50) goToGiftPage();
     }
+
+    document.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; });
+    document.addEventListener('touchend', e => { touchendX = e.changedTouches[0].screenX; checkSwipe(); });
 </script>
 
 </body>
