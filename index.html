@@ -1,39 +1,55 @@
-  <!-- redeploy -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday! 🎉</title>
+<title>Happy Birthday! 💖</title>
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
     body {
         margin: 0;
         padding: 0;
-        font-family: 'Comic Sans MS', cursive, sans-serif;
-        background: linear-gradient(to right, #ff9a9e, #fad0c4);
+        font-family: 'Pacifico', cursive;
+        overflow: hidden;
+        background: radial-gradient(circle at top left, #ff9a9e, #fad0c4, #fbc2eb);
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
         height: 100vh;
-        overflow: hidden;
         text-align: center;
         color: #fff;
     }
 
     h1 {
         font-size: 3em;
-        margin: 0.5em;
-        text-shadow: 3px 3px 8px #000;
+        margin: 0.2em;
+        text-shadow: 2px 2px 8px #000;
     }
 
-    p {
-        font-size: 1.5em;
-        margin: 0.3em 0 1em 0;
-        text-shadow: 2px 2px 5px #000;
+    .cake {
+        font-size: 5em;
+        margin: 10px 0;
+        animation: bounce 1s infinite;
     }
 
-    /* Animated heart stickers */
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+
+    .paragraph {
+        max-width: 90%;
+        background: rgba(0,0,0,0.2);
+        padding: 15px 20px;
+        border-radius: 15px;
+        font-size: 1.2em;
+        margin-top: 20px;
+        line-height: 1.5em;
+        box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+
     .heart {
         position: absolute;
         font-size: 2em;
@@ -46,7 +62,6 @@
         100% { transform: translateY(-50vh) rotate(360deg); opacity: 0; }
     }
 
-    /* Confetti circles */
     .confetti {
         position: absolute;
         width: 10px;
@@ -62,42 +77,22 @@
         100% { transform: translateY(100vh) rotate(360deg); }
     }
 
-    .cake {
-        font-size: 5em;
-        animation: bounce 1s infinite;
-        margin-bottom: 20px;
-    }
-
-    @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-20px); }
-    }
-
-    .message {
-        max-width: 90%;
-        background: rgba(255, 255, 255, 0.2);
-        padding: 15px 20px;
-        border-radius: 15px;
-        margin-top: 20px;
-        font-size: 1.2em;
-    }
 </style>
 </head>
 <body>
 
-<!-- Cake emoji -->
 <div class="cake">🎂</div>
-
 <h1>Happy Birthday! 💖</h1>
-<p>To the most amazing person in the world!</p>
 
-<div class="message">
-You light up everyone’s life with your smile 🌟<br>
-May your day be full of joy, love ❤️, and laughter 😂<br>
-And may this year bring you endless happiness 💫
+<div class="paragraph">
+Hey… I know we’ve never talked before, but I couldn’t let this day pass without telling you something important.  
+Even without knowing you, I feel like your smile and presence could light up the whole world.  
+I hope this day brings you endless happiness, laughter, and magical memories ✨.  
+I wanted to wish you from the bottom of my heart that you’re truly amazing ❤️, and I hope one day I get the chance to know you better.  
+May this year be filled with everything you dream of 💫.  
+Happy Birthday, the world is brighter because you exist 🌸.
 </div>
 
-<!-- Floating hearts -->
 <script>
     const hearts = ['❤️','💛','💚','💙','💜','🧡','💕','💖','💞'];
     for(let i=0;i<30;i++){
