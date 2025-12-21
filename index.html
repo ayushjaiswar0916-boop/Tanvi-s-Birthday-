@@ -4,48 +4,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday!</title>
+<title>Happy Birthday! 🎉</title>
 <style>
     body {
         margin: 0;
         padding: 0;
-        font-family: Arial, sans-serif;
-        background: linear-gradient(to right, #fceabb, #f8b500);
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        background: linear-gradient(to right, #ff9a9e, #fad0c4);
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
         flex-direction: column;
+        height: 100vh;
+        overflow: hidden;
         text-align: center;
         color: #fff;
     }
+
     h1 {
         font-size: 3em;
-        margin-bottom: 0.5em;
-        text-shadow: 2px 2px 5px #000;
+        margin: 0.5em;
+        text-shadow: 3px 3px 8px #000;
     }
+
     p {
         font-size: 1.5em;
-        margin-bottom: 1em;
-        text-shadow: 1px 1px 3px #000;
+        margin: 0.3em 0 1em 0;
+        text-shadow: 2px 2px 5px #000;
     }
+
+    /* Animated heart stickers */
+    .heart {
+        position: absolute;
+        font-size: 2em;
+        animation: float 6s linear infinite;
+        opacity: 0.8;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(-50vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* Confetti circles */
+    .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #fff;
+        border-radius: 50%;
+        animation: confettiFall 5s linear infinite;
+        opacity: 0.9;
+    }
+
+    @keyframes confettiFall {
+        0% { transform: translateY(-10vh) rotate(0deg); }
+        100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
     .cake {
-        width: 150px;
-        height: 150px;
-        margin-bottom: 20px;
-        background: url('https://i.ibb.co/2gFh2Yb/birthday-cake.png') no-repeat center/contain;
+        font-size: 5em;
         animation: bounce 1s infinite;
+        margin-bottom: 20px;
     }
+
     @keyframes bounce {
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(-20px); }
     }
+
+    .message {
+        max-width: 90%;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 15px 20px;
+        border-radius: 15px;
+        margin-top: 20px;
+        font-size: 1.2em;
+    }
 </style>
 </head>
 <body>
-<div class="cake"></div>
-<h1>Happy Birthday!</h1>
-<p>Wishing you lots of joy and happiness 🎉</p>
+
+<!-- Cake emoji -->
+<div class="cake">🎂</div>
+
+<h1>Happy Birthday! 💖</h1>
+<p>To the most amazing person in the world!</p>
+
+<div class="message">
+You light up everyone’s life with your smile 🌟<br>
+May your day be full of joy, love ❤️, and laughter 😂<br>
+And may this year bring you endless happiness 💫
+</div>
+
+<!-- Floating hearts -->
+<script>
+    const hearts = ['❤️','💛','💚','💙','💜','🧡','💕','💖','💞'];
+    for(let i=0;i<30;i++){
+        let heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random()*100 + 'vw';
+        heart.style.fontSize = (20+Math.random()*30)+'px';
+        heart.innerText = hearts[Math.floor(Math.random()*hearts.length)];
+        heart.style.animationDuration = (3 + Math.random()*5)+'s';
+        document.body.appendChild(heart);
+    }
+
+    // Confetti
+    for(let i=0;i<50;i++){
+        let c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random()*100 + 'vw';
+        c.style.backgroundColor = `hsl(${Math.random()*360}, 80%, 60%)`;
+        c.style.width = c.style.height = (5+Math.random()*10)+'px';
+        c.style.animationDuration = (3+Math.random()*5)+'s';
+        document.body.appendChild(c);
+    }
+</script>
+
 </body>
 </html>
-
