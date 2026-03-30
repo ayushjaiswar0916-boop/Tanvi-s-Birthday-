@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday</title>
+<title>Happy Birthday Tanvi</title>
 
 <style>
 body{
@@ -81,14 +81,14 @@ img{
 
 <!-- PAGE 1 -->
 <div id="page1" class="page">
-  <h1>🎂 Happy Birthday 🎂</h1>
+  <h1>🎂 Happy Birthday Tanvi 🎂</h1>
   <p>Tap below to cut the cake ✨</p>
   <button onclick="openGift()">Cut the Cake 🎂</button>
 </div>
 
 <!-- PAGE 2 -->
 <div id="page2" class="page hidden">
-  <h1>💜 Just for You 💜</h1>
+  <h1>💜 Just for Tanvi 💜</h1>
 
   <img src="https://raw.githubusercontent.com/ayushjaiswar0916-boop/GehnaBirthday-/main/photo1.jpg" alt="Birthday Photo">
 
@@ -97,32 +97,10 @@ img{
     bright like quiet stars,  
     and full of moments that stay with you forever ✨  
     <br><br>
-    Happy Birthday 🌸
+    Happy Birthday Tanvi 🌸
   </p>
 </div>
 
 <script>
 function openGift(){
-  document.getElementById("page1").classList.add("hidden");
-  document.getElementById("page2").classList.remove("hidden");
-
-  document.getElementById("music").play().catch(()=>{});
-  startStars();
-}
-
-function startStars(){
-  const stars = ["✨","⭐","🌟","💫"];
-  setInterval(()=>{
-    const s = document.createElement("div");
-    s.className = "star";
-    s.innerText = stars[Math.floor(Math.random()*stars.length)];
-    s.style.left = Math.random()*100 + "vw";
-    s.style.animationDuration = (5 + Math.random()*5) + "s";
-    document.body.appendChild(s);
-    setTimeout(()=>s.remove(),10000);
-  },350);
-}
-</script>
-
-</body>
-</html>
+  document.get
